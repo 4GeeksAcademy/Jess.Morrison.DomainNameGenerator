@@ -11,20 +11,22 @@ let noun = ["knives", "footballs", "bathroom", "pumpkin"];
 let ext = [".com", ".net", ".us", ".gov"];
 
 let getDomain = () => {
+  let domains = "";
   for (let pronounIndex = 0; pronounIndex < pronoun.length; pronounIndex++) {
     for (
       let adjectiveIndex = 0;
       adjectiveIndex < adjective.length;
       adjectiveIndex++
-    )
-      for (let nounIndex = 0; nounIndex < noun.length; nounIndex++)
-        for (let extIndex = 0; extIndex < ext.length; extIndex++)
-          console.log(
-            pronoun[pronounIndex] +
-              adjective[adjectiveIndex] +
-              noun[nounIndex] +
-              ext[extIndex]
-          );
+    ) {
+      for (let nounIndex = 0; nounIndex < noun.length; nounIndex++) {
+        for (let extIndex = 0; extIndex < ext.length; extIndex++) {
+          domains += `<p>${pronoun[pronounIndex]}${adjective[adjectiveIndex]}${noun[nounIndex]}${ext[extIndex]}</p>`;
+        }
+      }
+    }
   }
+  return domains;
 };
-let domainName = getDomain();
+
+let domainNames = getDomain();
+document.getElementById("domainName").innerHTML = domainNames;
